@@ -1,0 +1,32 @@
+import sys
+
+# Classic Snake game using pygame
+# Controls: Arrow keys to move, P to pause, Esc to quit
+
+CELL_SIZE = 20
+GRID_W = 30
+GRID_H = 20
+WIDTH = CELL_SIZE * GRID_W
+HEIGHT = CELL_SIZE * GRID_H
+BASE_FPS = 10
+SPEED_STEP = 1
+SPEED_EVERY = 4
+
+BLACK = (0, 0, 0)
+DARK = (20, 20, 20)
+GREEN = (0, 200, 0)
+BRIGHT_GREEN = (0, 255, 0)
+RED = (220, 50, 50)
+WHITE = (245, 245, 245)
+
+
+def rand_food(snake):
+    free_cells = [
+        (x, y)
+        for x in range(GRID_W)
+        for y in range(GRID_H)
+        if (x, y) not in snake
+    ]
+    if not free_cells:
+        return None
+    return random.choice(free_cells)
